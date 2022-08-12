@@ -46,7 +46,7 @@ namespace Shop.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View("Index","Home");
         }
 
         [HttpPost]
@@ -68,7 +68,7 @@ namespace Shop.Controllers
         public async Task<ActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

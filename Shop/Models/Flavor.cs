@@ -13,8 +13,6 @@ namespace Shop.Models
 
     public string FlavorName { get; set; }
 
-    public virtual Treat Treat {get; set;}
-
     public virtual ApplicationUser User { get; set; }
 
     public virtual ICollection<TreatFlavor> JoinEntities { get; }

@@ -35,16 +35,16 @@ namespace Shop.Controllers
       return View();
     }
   [HttpPost]
-  public async Task<ActionResult> Create(Flavor Flavor, int TreatId)
+  public async Task<ActionResult> Create(Flavor flavor, int TreatId)
   {
     var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    var currentUser = await _userManager.FindByIdAsync(userId);
-    Flavor.User = currentUser;
+    // var currentUser = await _userManager.FindByIdAsync(userId);
+    // Flavor.User = currentUser;
     _db.Flavors.Add(flavor);
     _db.SaveChanges();
     if (TreatId != 0)
     {
-        _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+        _db.TreatFlavors.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
     }
     _db.SaveChanges();
     return RedirectToAction("Index");

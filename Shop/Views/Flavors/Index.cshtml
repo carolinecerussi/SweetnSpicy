@@ -9,6 +9,11 @@
 
 @if (Model.Any())
 {
+  <h3>No Flavors Added!</h3>
+}
+else {
+
+<p>@Html.ActionLink("Add a FLavor", "Create")</p>
 
   <ul>
     @foreach (Flavor flavor in Model)
@@ -17,10 +22,6 @@
     }
 
   </ul>
-}
-else
-{
-  <h3>No Flavors Added!</h3>
 }
 
 <p>@Html.ActionLink("Add a FLavor", "Create")</p>
