@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Shop.Models;
+@model IEnumerable<Shop.Models.Flavor>
+
+<h1> Flavor Options </h1>
+
+@if (Model.Any())
+{
+
+  <ul>
+    @foreach (Flavor flavor in Model)
+    {
+      <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</li>
+    }
+
+  </ul>
+}
+else
+{
+  <h3>No Flavors Added!</h3>
+}
+
+<p>@Html.ActionLink("Add a FLavor", "Create")</p>

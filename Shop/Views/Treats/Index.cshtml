@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Shop.Models;
+@model IEnumerable<Shop.Models.Treat>
+
+<h1> Treat Options </h1>
+
+@if (Model.Any())
+{
+
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <li>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</li>
+    }
+
+  </ul>
+}
+else
+{
+  <h3>No Treats Added!</h3>
+}
+
+<p>@Html.ActionLink("Add a Treat", "Create")</p>
