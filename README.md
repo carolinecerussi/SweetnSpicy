@@ -2,7 +2,7 @@
 
 #### By Caroline Cerussi
 
-#### Navigate through Mr.SillyStringz Factory webpage where it is possible to view a list of the current engineers and machines available at the factory. You have functionality to add, delete, assign and edit the machine and engineer information. 
+#### Website for Pierre's bake shop, that alllows a user to navigate and see the list of flavor and treat options. If you login or register an account, you will then also have access to adding your own flavor or treat. 
 
 ## Technologies Used
 
@@ -18,26 +18,37 @@
 
 ## Description
 
-Upon opening the webpage, there is an index of Dr. Sillystringz' engineers and machines in his factory. He can view a list of engineers with individual detail pages linked into each listed name. If you click into an engineer's details, you can then view info such as their name, machines they use, and how many years of experience they have. You have the option to add a machine to their specific page. 
-Another option off the homepage index, is to similarly click into a detailed page for specific machinery listed by clicking the hyperlinked name. You can then view the machine's name, and see a list of engineers that use it, and can add an engineer. He is also able to add and remove both the machine and engineer from any entry. 
+Upon opening the webpage, the index home page will give you an option to view the flavor or treat lists, along with two links to login or register an account. In order to access capabilities of deleting, editing, or adding a flavor or treat, the user must be logged into their account, or register for one using an email and custom password. 
 
+For the flavors and treats, you may add and assign a treat that holds a certain flavor, along with select treats to list under a flavor profile. To see which belong with which, you can click the hyperlinked name of the treat or flavor in its list to see all of its attributes. 
 
 ## Setup/Installation Requirements
 
-* Clone repository to desktop
-* to run this program, you will need to import the caroline_cerussi.sql file into MySql Workbench and create a new schema named caroline_cerussi
-* Create an appsettings.json file in the Factory directory and copy in the following:
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=caroline_cerussi;uid=root;pwd=epicodus;"
-  }
-}
+Setup/Installation Requirements
+Clone this repository to your desktop by executing git clone https://github.com/carolinecerussi/SweetnSpicy in your preferred terminal application.
 
-* navigate to the Factory directory in your terminal, cd to Factory directory, and type dotnet restore, dotnet build, and then dotnet run to run localhost website.
+In the terminal, cd into the /Shop/ directory then execute the dotnet restore command to auto-populate the project with an /obj/ directory and its required contents.
+
+Ensure you have the following packages by running the following terminal commands for installing each: dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0 dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0-alpha.2 dotnet add package Microsoft.EntityFrameworkCore.Proxies -v 6.0.0
+
+Create an 'appsettings.json' file in the project root and populate it with the following content, taking care to update with your unique database configurations: { "ConnectionStrings": { "DefaultConnection": "Server=localhost;Port=3306;database=sase-db;uid=root;pwd=[YOUR PASSWORD];" } }
+
+NOTE: [password] should be replaced by your password. Do not include square brackets in final configuration.
+Execute dotnet build in the terminal to automatically create the required /bin/ folder for the project.
+
+To build out a database with a code first approach ensure the following packages have been installed/updated on your machine via these terminal commands: dotnet tool update --global dotnet-ef --version 6.0.0 dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0
+
+To create a record, or snapshot, of the current database run the following command: dotnet ef migrations add Initial
+
+NOTE: Repeat this command, after updating 'Initial' to whichever name best represents your new database snapshot, any time a change is made to the database.
+Run the following command to update your database to reflect the recent migration data: dotnet ef database update
+
+To start and run the app execute dotnet run from the /SweetAndSavoryExplorer/ directory or, optionally, dotnet watch run to start the app and cause it to rebuild and run after each saved change to the codebase.
+
 
 ## Known Bugs
 
-* Code has been broken, need to update my mysql workbench database
+* code is not broken, but some clickable links seem to show up blank in my localhost.
 
 ## License
 [MIT]

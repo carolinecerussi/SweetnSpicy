@@ -35,8 +35,8 @@ namespace Shop
 
       services.Configure<IdentityOptions>(options =>
       {
-        options.Password.RequireDigit = true;
-        options.Password.RequiredLength = 8;
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 0;
         options.Password.RequireLowercase = false;
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireUppercase = false;

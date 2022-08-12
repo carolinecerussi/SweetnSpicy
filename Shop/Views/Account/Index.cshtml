@@ -5,7 +5,6 @@
 @using System.Security.Claims
 
 
-<hr />
 
 
 @if (User.Identity.IsAuthenticated)
@@ -14,14 +13,19 @@
 
     @using (Html.BeginForm("LogOff", "Account"))
     {
-        <input id="btn" type="submit" value="Log out" />
+        <input type="submit" class="btn btn-default" value="Log out" />
     }
+    <p>@Html.ActionLink("Flavor List", "Index", "Flavors")</p>
+    <p>@Html.ActionLink("Add Flavor", "Create", "Flavors")</p>
+
+    <p>@Html.ActionLink("Treat List", "Index", "Treats")</p>
+    <p>@Html.ActionLink("Add Treat", "Create", "Treats")</p>
 }
 else
 {
 
     <p>@Html.ActionLink("Register", "RegisterViewModel")</p>
-    <p>@Html.ActionLink("Log in", "LoginViewModel")</p>
+    <p>@Html.ActionLink("Log in", "Index")</p>
 
 
 }

@@ -46,7 +46,7 @@ namespace Shop.Controllers
 
         public ActionResult Login()
         {
-            return View("Index","Home");
+            return View();
         }
 
         [HttpPost]

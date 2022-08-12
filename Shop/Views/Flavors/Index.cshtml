@@ -3,17 +3,19 @@
 }
 
 @using Shop.Models;
-@model IEnumerable<Shop.Models.Flavor>
+
+@model IEnumerable<Shop.Models.Flavor>;
+
 
 <h1> Flavor Options </h1>
 
-@if (Model.Any())
+
+@foreach (Flavor flavor in Model)
+@if (@Model.Any())
 {
   <h3>No Flavors Added!</h3>
-}
-else {
 
-<p>@Html.ActionLink("Add a FLavor", "Create")</p>
+}
 
   <ul>
     @foreach (Flavor flavor in Model)
@@ -22,6 +24,5 @@ else {
     }
 
   </ul>
-}
 
 <p>@Html.ActionLink("Add a FLavor", "Create")</p>

@@ -23,10 +23,12 @@ namespace Shop.Controllers
       _db = db;
     }
     [AllowAnonymous]
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-
-      return View();
+    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var currentUser = await _userManager.FindByIdAsync(userId);
+    var userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
+    return View(userFlavors);
     }
 
     public ActionResult Create()
@@ -38,8 +40,8 @@ namespace Shop.Controllers
   public async Task<ActionResult> Create(Flavor flavor, int TreatId)
   {
     var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    // var currentUser = await _userManager.FindByIdAsync(userId);
-    // Flavor.User = currentUser;
+    var currentUser = await _userManager.FindByIdAsync(userId);
+    flavor.User = currentUser;
     _db.Flavors.Add(flavor);
     _db.SaveChanges();
     if (TreatId != 0)
